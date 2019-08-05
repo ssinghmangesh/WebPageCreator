@@ -55,4 +55,14 @@ export default {
     
 }
 </script>
+<style>
+.custom-handle-handle-item{
+    margin-bottom: 20px;
+}
+.custom-handle-handle-item-title {
+    margin-bottom: 10px;
+
+}
+</style>
+
 

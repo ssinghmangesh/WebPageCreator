@@ -76,6 +76,8 @@ export default {
 .custom-page-board {
     padding: 20px;
     width: 100%;
+    max-width: 1000px;
+    margin: auto;
 }
 
 </style>

@@ -13,28 +13,28 @@
   </div>
   <div class="custom-top-menu">
 
-      <el-tooltip class="item" effect="dark" content="Preview" placement="top">
+      <el-tooltip class="item" effect="dark" content="Drag this element to respected column" placement="top">
         <div
           draggable="true"
           @dragend="handleEvent('heading', $event)">
           H
         </div>
     </el-tooltip>
-     <el-tooltip class="item" effect="dark" content="Preview" placement="top">
+     <el-tooltip class="item" effect="dark" content="Drag this element to respected column" placement="top">
         <div
           draggable="true"
           @dragend="handleEvent('paragraph', $event)">
           P
         </div>
     </el-tooltip>
-     <el-tooltip class="item" effect="dark" content="Preview" placement="top">
+     <el-tooltip class="item" effect="dark" content="Drag this element to respected column" placement="top">
         <div
           draggable="true"
           @dragend="handleEvent('code', $event)">
          {{ 'code' }}
         </div>
     </el-tooltip>
-     <el-tooltip class="item" effect="dark" content="Preview" placement="top">
+     <el-tooltip class="item" effect="dark" content="Drag this element to respected column" placement="top">
         <div
           draggable="true"
           @dragend="handleEvent('image', $event)">

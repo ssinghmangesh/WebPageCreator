@@ -1,19 +1,19 @@
 <template>
     <div class="custom-handle-handle">
     <div>
-        <div>
-            <div>URL : </div>
-            <div><el-input v-model="data"></el-input></div>
+        <div class="custom-handle-handle-item">
+            <div class="custom-handle-handle-item-title">URL : </div>
+            <div><el-input v-model="data" placeholder="http://example.com/image.png"></el-input></div>
         </div> 
-        <div>
-            <div>height : </div>
-            <div><el-input v-model="height"></el-input></div>
+        <div class="custom-handle-handle-item">
+            <div class="custom-handle-handle-item-title">height : </div>
+            <div><el-input v-model="height" placeholder="example 100, 200"></el-input></div>
         </div> 
-        <div>
-            <div>width : </div>
-            <div><el-input v-model="width"></el-input></div>
+        <div class="custom-handle-handle-item">
+            <div class="custom-handle-handle-item-title">width : </div>
+            <div><el-input v-model="width" placeholder="example 100, 200"></el-input></div>
         </div> 
-        <div>
+        <div class="custom-handle-handle-item">
             <el-button type="primary" @click="onSubmit">Create</el-button>
             <el-button @click="onReset">Cancel</el-button>
         </div>

@@ -1,6 +1,5 @@
 <template>
-    <div>
-        {{ data || 'Click here to edit the text'}}
+    <div v-html="data || 'Click here to edit the text'">
     </div>
 </template>
 <script>
