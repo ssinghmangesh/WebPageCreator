@@ -11,6 +11,7 @@
                     @drag="handleDrag" 
                     @drop="handleDrop"
                     @handleRemoveRow="handleRemoveRow"
+                    @handleElementDrop="handleElementDrop"
                 />
         </draggable>
     </div>
@@ -40,6 +41,10 @@ export default {
     computed: {
     },
     methods: {
+        handleElementDrop(ep) {
+            this.$emit("handleElementDrop",ep)
+        },
+
         handleRemoveRow(val) {
             this.$emit("handleRemoveRow", val)
         },

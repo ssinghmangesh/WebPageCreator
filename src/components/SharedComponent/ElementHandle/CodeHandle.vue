@@ -16,27 +16,18 @@
 export default {
     data() {
         return {
-            color: '',
-            data: '',
-            fontSize: '',
-            padding: ''
+            data: ''
         }
     },
     methods: {
         onSubmit() {
             const { color, fontSize, padding, data } = this
             this.$emit("submited", {
-                style: {
-                    color, fontSize, padding
-                },
                 data
             })
         },
         onReset() { 
-            this.color = '',
-            this.data = '',
-            this.fontSize = '',
-            this.padding = ''
+            this.data = ''
         }
     }
     

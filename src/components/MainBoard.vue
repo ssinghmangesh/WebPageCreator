@@ -1,10 +1,12 @@
 <template>
   <div class="custom-main-board">
-    <PageBoard :pageDetails="pageDetails" 
-      @handleAddElement="handleAddElement"
-      @addDataInElement="addDataInElement"
-      @handleRemoveRow="handleRemoveRow"
-      @dragDropPreformed="dragDropPreformed"/>
+    <PageBoard 
+        :pageDetails="pageDetails" 
+        @handleAddElement="handleAddElement"
+        @addDataInElement="addDataInElement"
+        @handleRemoveRow="handleRemoveRow"
+        @handleElementDrop="handleElementDrop"
+        />
     <div class="custom-add-row-option">
       <div class="custom-add-row-option-container">
         <el-button @click="$emit('openAddRowModal')">ADD NEW ROW</el-button>
@@ -25,6 +27,9 @@ export default {
     }
   },
     methods: {
+        handleElementDrop(ep) {
+            this.$emit("handleElementDrop",ep)
+        },
         handleAddElement(elementPosition) {
             this.$emit("handleAddElement", elementPosition)
         },

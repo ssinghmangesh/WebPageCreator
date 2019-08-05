@@ -19,6 +19,7 @@
         <AddElement 
             v-else 
             @handleAddElement="handleAddElement"
+            @handleElementDrop="handleElementDrop"
         />
     </div>
 </template>
@@ -55,6 +56,9 @@ export default {
         }
     }, 
     methods: {
+        handleElementDrop() {
+            this.$emit("handleElementDrop", this.columnIndex)
+        },
         handleAddElement() {
             const { columnIndex } = this
             let elementPosition = { columnIndex }

@@ -1,10 +1,26 @@
 <template>
-    <div class="custom-add-element">
+    <div class="custom-add-element"
+    @dragover.prevent @drop="handleDrop">
         <div class="custom-add-element-item" @click.stop="$emit('handleAddElement')">
             add element
         </div>
     </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            mouseOnElement: false
+        }
+    },
+    methods: {
+        handleDrop() {
+            this.$emit("handleElementDrop")
+        },
+    },
+}
+</script>
+
 <style>
 .custom-add-element {
     border-radius: 4px;

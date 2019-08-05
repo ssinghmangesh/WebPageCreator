@@ -11,6 +11,7 @@
                 :elementDetails="item"
                 :columnIndex="index"
                 @handleAddElement="handleAddElement"
+                @handleElementDrop="handleElementDrop"
             />
         </div>
         <div class="custom-row-delete"@click="handleRemoveRow"><i class="el-icon-close"></i></div>
@@ -53,6 +54,13 @@ export default {
 
     },
     methods: {
+        handleElementDrop(val) {
+            let ep = {
+                columnIndex: val,
+                rowIndex: this.rowIndex
+            }
+            this.$emit("handleElementDrop",ep)
+        },
         handleClick(item, index) {
             if(item.type) {
                 this.$emit("addDataInElement", {

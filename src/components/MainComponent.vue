@@ -2,6 +2,8 @@
     <div>
         <TopMenu 
             @openAddRowModal="aopenAddRowModal"
+            @showPreview="showPreview"
+            @dragItemType="dragItemType"
         />
         <MainBoard 
             :pageDetails="pageDetails"
@@ -10,6 +12,9 @@
             @addDataInElement="addDataInElement"
             @dragDropPreformed="dragDropPreformed"
             @handleRemoveRow="handleRemoveRow"
+            @dragItemType="dragItemType"
+            @handleElementDrop="handleElementDrop"
+
         />
         <AddRow 
             :open="openAddRowModal" 
@@ -27,12 +32,18 @@
             @submited="submited"
             @close="openElementRuleModal = false"
         />
+       <!-- <ShowPreview 
+            :visible="openShowPreview"
+            :pageData="pageDetails"
+            @close="closeShowPreview"
+        /> -->
     </div>
 </template>
 <script>
 import Vue from 'vue';
 
 import AddRow from "./AddRow";
+import ShowPreview from "./ShowPreview";
 import AddElement from "./AddElement";
 import AddElementDetails from "./AddElementDetails";
 import TopMenu from "./TopMenu";
@@ -43,7 +54,8 @@ export default {
         MainBoard,
         AddRow,
         AddElement,
-        AddElementDetails
+        AddElementDetails,
+        ShowPreview
     },
     data() {
         return {
@@ -51,14 +63,28 @@ export default {
             openAddElementModal: false,
             openElementRuleModal: false,
             updatingElementPosition: {},
+            openShowPreview: false,
             selectedElement: {},
             pageDetails: {
                 numberOfRow: 0,
                 rows: []
-            }
+            },
+            dropPosition: null,
+            dropElementType:''
         }
     },
     methods: {
+        handleElementDrop(ep){
+            this.dropPosition = ep
+        },
+        dragItemType(type){
+            if(this.dropPosition) {
+                const { rowIndex, columnIndex  } = this.dropPosition
+                Vue.set( this.pageDetails.rows[rowIndex].column[columnIndex],'type' , type)
+
+            }
+            this.dropPosition = null
+        },
 
         handleRemoveRow(val) {
             let r = this.pageDetails.rows
@@ -105,11 +131,16 @@ export default {
         submited(elementData) {
               const { rowIndex, columnIndex } = this.updatingElementPosition
               const { style, data } = elementData
-              console.log("elementData : ", elementData)
-              console.log(this.pageDetails.rows[rowIndex].column[columnIndex])
               Vue.set( this.pageDetails.rows[rowIndex].column[columnIndex],'data' , data)
               Vue.set( this.pageDetails.rows[rowIndex].column[columnIndex],'style' , style)
 
+        },
+        showPreview() {
+            console.log("show preview")
+            this.openShowPreview = true
+        },
+        closeShowPreview() {
+            this.openShowPreview = false
         }
     }
 };
